@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .fact-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fact-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            padding: 15px;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-wrap: break-word;
+        }
+
+        .fact-display:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="factButton" class="fact-button">Get a Crocodile Fact</button>
+        <div id="factDisplay" class="fact-display"></div>
+    </div>
+    <script>
+        const facts = [
+            {
+                "fact": "Ancient Lineage",
+                "description": "Crocodiles have been around for over 200 million years, making them one of the oldest living reptiles, having survived the extinction event that wiped out the dinosaurs."
+            },
+            {
+                "fact": "Diverse Species",
+                "description": "There are 23 different species of crocodilians, which include crocodiles, alligators, caimans, and gharials."
+            },
+            {
+                "fact": "Habitat",
+                "description": "Crocodiles are typically found in freshwater habitats like rivers, lakes, wetlands, and sometimes in brackish water."
+            },
+            {
+                "fact": "Size Variation",
+                "description": "The smallest species, the dwarf crocodile, grows to about 5 feet long, while the largest, the saltwater crocodile, can exceed 23 feet in length."
+            },
+            {
+                "fact": "Powerful Jaws",
+                "description": "Crocodiles have one of the strongest bites in the animal kingdom, capable of exerting thousands of pounds of pressure per square inch."
+            },
+            {
+                "fact": "Cold-Blooded",
+                "description": "As ectothermic animals, crocodiles rely on external heat sources to regulate their body temperature."
+            },
+            {
+                "fact": "Ambush Predators",
+                "description": "Crocodiles are known for their stealth and patience, often lying in wait for hours before ambushing prey with a sudden burst of speed."
+            },
+            {
+                "fact": "Communication",
+                "description": "They communicate through a variety of vocalizations, including growls, hisses, and roars, especially during mating season."
+            },
+            {
+                "fact": "Parental Care",
+                "description": "Female crocodiles are attentive mothers, guarding their nests and sometimes carrying their young to water in their mouths."
+            },
+            {
+                "fact": "Longevity",
+                "description": "Crocodiles can live for several decades, with some species living over 70 years in the wild."
+            }
+        ];
+
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        document.getElementById('factButton').addEventListener('mouseenter', () => {
+            if (attempts < maxAttempts) {
+                attempts++;
+                alert(`You need to try ${maxAttempts - attempts} more times to unlock the facts!`);
+            }
+        });
+
+        document.getElementById('factButton').addEventListener('click', () => {
+            if (attempts >= maxAttempts) {
+                const randomFact = facts[Math.floor(Math.random() * facts.length)];
+                document.getElementById('factDisplay').innerHTML = `<strong>${randomFact.fact}:</strong> ${randomFact.description}`;
+            }
+        });
+    </script>
+</body>
+</html>
